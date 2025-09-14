@@ -1,27 +1,25 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  firstName: {
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  role: {
     type: String,
-    required: true,
+    enum: ['attendee', 'host', 'admin'],
+    default: 'attendee'
   },
-  lastName: {
+  // ✅ ADD THIS FIELD
+  hostRequestStatus: {
     type: String,
-    required: true,
+    enum: ['none', 'pending', 'approved'],
+    default: 'none'
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true, // No two users can share the same email
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  bookedEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('User', UserSchema);

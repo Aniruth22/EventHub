@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const File = require('../models/File'); // Import the File model
+const File = require('../models/File');
+const auth = require('../middleware/authMiddleware'); // ✅ IMPORT THE AUTH MIDDLEWARE
 
-// Set up storage engine for multer
 const storage = multer.diskStorage({
   destination: './uploads/',
   filename: function(req, file, cb) {
@@ -12,15 +12,13 @@ const storage = multer.diskStorage({
   }
 });
 
-// Initialize upload variable
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 10000000 }, // Limit file size to 10MB
-}).single('eventPoster'); // 'eventPoster' is the name of the form field
+  limits: { fileSize: 10000000 },
+}).single('eventPoster');
 
-// @route   POST /api/upload
-// @desc    Upload a file and save its metadata
-router.post('/', (req, res) => {
+// ✅ PROTECT THE ROUTE WITH THE AUTH MIDDLEWARE
+router.post('/', auth, (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
       return res.status(500).json({ error: err.message });
@@ -28,8 +26,6 @@ router.post('/', (req, res) => {
     if (req.file == undefined) {
       return res.status(400).json({ error: 'No file selected!' });
     }
-
-    // Create a new file document in the database
     const newFile = new File({
       originalName: req.file.originalname,
       fileName: req.file.filename,
@@ -37,7 +33,6 @@ router.post('/', (req, res) => {
       fileType: req.file.mimetype,
       fileSize: req.file.size,
     });
-
     try {
       const savedFile = await newFile.save();
       res.status(201).json({

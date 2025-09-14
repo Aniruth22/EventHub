@@ -16,7 +16,7 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ error: 'User already exists' });
     }
 
-    // 2. Create a new user instance
+    // 2. Create a new user instance (role will default to 'attendee')
     user = new User({
       firstName,
       lastName,
@@ -24,7 +24,7 @@ router.post('/signup', async (req, res) => {
       password,
     });
 
-    // 3. Hash the password
+    // 3. Hash the password before saving
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
@@ -58,20 +58,24 @@ router.post('/signin', async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    // 3. Create and sign a JSON Web Token (JWT)
+    // 3. Create the payload for the JSON Web Token (JWT)
+    // This now includes the user's role, which is crucial for authorization.
     const payload = {
       user: {
-        id: user.id, // Include user ID in the token
+        id: user.id,
+        role: user.role // Add the user's role to the token
       },
     };
 
+    // 4. Sign the token with your secret key
     jwt.sign(
       payload,
-      process.env.JWT_SECRET, // Your secret key
-      { expiresIn: '5h' }, // Token expires in 5 hours
+      process.env.JWT_SECRET,
+      { expiresIn: '5h' }, // Token will be valid for 5 hours
       (err, token) => {
         if (err) throw err;
-        res.json({ token }); // Send the token back to the client
+        // 5. Send the token back to the client
+        res.json({ token });
       }
     );
 

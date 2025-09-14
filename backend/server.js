@@ -29,12 +29,15 @@ const chatRoutes = require('./routes/chat');
 const eventRoutes = require('./routes/events');
 const profileRoutes = require('./routes/profile');
 
+const usersRoutes = require('./routes/users');
+
 // Register the routes
 app.use('/api/upload', uploadRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/users', usersRoutes);
 
 // Define a simple test route for the root URL to check if the server is running
 app.get('/', (req, res) => {
