@@ -30,6 +30,7 @@ import AdminDashboard from './pages/AdminDashboard';
 const AppContent = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const location = useLocation();
+  console.log("new deployment");
   const showChatbot = location.pathname !== '/profile';
 
   return (
