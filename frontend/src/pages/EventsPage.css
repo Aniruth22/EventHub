@@ -1,0 +1,22 @@
+/* src/pages/EventsPage.css */
+
+.custom-datepicker-input {
+  width: 100%;
+  padding: 16.5px 14px;
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  box-sizing: border-box; /* Important for padding to be included in width */
+  transition: border-color 0.2s ease-in-out;
+}
+
+.custom-datepicker-input:hover {
+  border-color: rgba(0, 0, 0, 0.87);
+}
+
+.custom-datepicker-input:focus {
+  outline: none;
+  border-color: #1976d2; /* Material-UI primary color */
+  border-width: 2px;
+}

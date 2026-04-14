@@ -1,0 +1,122 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: linear-gradient(to right, #7b4397, #dc2430); /* Background as in image */
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Make it sticky at the top */
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-left, .navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-right: 30px;
+}
+
+.navbar-brand .logo {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  border-radius: 8px; /* Slightly rounded corners for the placeholder logo */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-right: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f0f0f0; /* Lighter on hover */
+  text-decoration: underline;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-right: 20px;
+}
+
+.search-box input {
+  background: none;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  outline: none;
+  width: 180px;
+  font-size: 0.95rem;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 5px;
+  display: flex; /* For proper icon alignment */
+  align-items: center;
+}
+
+/* Auth Buttons and Profile */
+.navbar-right .btn {
+  margin-left: 10px;
+}
+
+.nav-icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.nav-profile-btn {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.nav-profile-btn .profile-icon {
+  font-size: 1.8rem;
+  margin-right: 8px;
+}

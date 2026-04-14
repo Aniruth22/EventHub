@@ -1,0 +1,40 @@
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px); /* Adjust based on navbar height, approx 80px */
+  background: linear-gradient(to right, #7b4397, #dc2430); /* Same as navbar for continuity */
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 4.5rem; /* Larger font size */
+  margin-bottom: 20px;
+  line-height: 1.1;
+  font-weight: 800; /* Bolder */
+}
+
+.hero-content h1 span {
+  color: #ffc107; /* Orange color for 'Events' */
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+}

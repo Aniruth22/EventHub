@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5; /* Light grey background */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Basic Button Styling */
+.btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none; /* For Link buttons */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: #7b4397; /* Purple */
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #6a3a83;
+}
+
+.btn-secondary {
+  background: none;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Sticky Chatbot Icon Styling */
+.chatbot-icon-container {
+  position: fixed; /* Makes it stay in place */
+  bottom: 20px;    /* 20px from the bottom */
+  right: 20px;     /* 20px from the right */
+  z-index: 1000;   /* Ensures it's above other content */
+}
+
+.chatbot-icon {
+  background: linear-gradient(45deg, #FF6B6B, #FFCD6B); /* Gradient color */
+  color: white;
+  border-radius: 50%; /* Makes it a circle */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.chatbot-icon:hover {
+  transform: scale(1.05);
+}
