@@ -12,7 +12,7 @@ const BecomeHostPage = () => {
     setLoading(true);
     setMessage('');
     try {
-      const res = await axios.post('http://localhost:5001/api/users/request-host');
+      const res = await axios.post(`http://${process.env.REACT_APP_API_URL}/api/users/request-host`);
       setMessage(res.data.msg);
     } catch (err) {
       setMessage('An error occurred. Please try again.');

@@ -17,7 +17,7 @@ const EventDetailPage = () => {
     const fetchEvent = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5001/api/events/${eventId}`);
+        const response = await axios.get(`http://${process.env.REACT_APP_API_URL}/api/events/${eventId}`);
         setEvent(response.data);
       } catch (err) {
         setError('Failed to fetch event details.');

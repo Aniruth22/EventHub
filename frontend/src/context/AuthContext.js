@@ -36,9 +36,10 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    loadUser();
-  }, [loadUser]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
+  loadUser();
+}, []);
 
   const login = (token) => {
     localStorage.setItem('authToken', token);
