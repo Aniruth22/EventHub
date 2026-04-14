@@ -15,8 +15,8 @@ const LiveEventsPage = () => {
         setLoading(true);
         // Fetch both sets of events in parallel
         const [liveRes, weekendRes] = await Promise.all([
-          axios.get(`http://${process.env.REACT_APP_API_URL}/api/events/live`),
-          axios.get(`http://${process.env.REACT_APP_API_URL}/api/events/weekend`)
+          axios.get(`https://${process.env.REACT_APP_API_URL}/api/events/live`),
+          axios.get(`https://${process.env.REACT_APP_API_URL}/api/events/weekend`)
         ]);
         setLiveEvents(liveRes.data);
         setWeekendEvents(weekendRes.data);

@@ -28,7 +28,7 @@ const EventsPage = () => {
     const fetchEvents = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://${process.env.REACT_APP_API_URL}/api/events`);
+        const response = await axios.get(`https://${process.env.REACT_APP_API_URL}/api/events`);
         setEvents(response.data);
       } catch (error) {
         console.error("Error fetching events:", error);

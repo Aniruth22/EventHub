@@ -13,7 +13,7 @@ const SignUpPage = () => {
     // --- ✅ API Call Logic ---
     try {
       // Send a POST request to your backend signup endpoint
-      const response = await axios.post(`http://${process.env.REACT_APP_API_URL}/api/auth/signup`, data);
+      const response = await axios.post(`https://${process.env.REACT_APP_API_URL}/api/auth/signup`, data);
 
       console.log(response.data);
       alert('Account created successfully! Please sign in.');

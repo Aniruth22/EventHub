@@ -14,7 +14,7 @@ const FeaturedEvents = () => {
       try {
         setLoading(true);
         // Fetch events from your backend
-        const response = await axios.get(`http://${process.env.REACT_APP_API_URL}/api/events`);
+        const response = await axios.get(`https://${process.env.REACT_APP_API_URL}/api/events`);
         // Show the first 6 events as "featured"
         setEvents(response.data.slice(0, 6));
       } catch (err) {

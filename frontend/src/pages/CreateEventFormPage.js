@@ -47,7 +47,7 @@ const CreateEventFormPage = () => {
         capacity: formDetails.get('capacity'),
         ticketPrice: formDetails.get('ticketPrice'),
         prizeMoney: formDetails.get('prizeMoney'),
-        image: `http://${process.env.REACT_APP_API_URL}${imageUrl}`,
+        image: `https://${process.env.REACT_APP_API_URL}${imageUrl}`,
         category: categoryTitle,
       };
       

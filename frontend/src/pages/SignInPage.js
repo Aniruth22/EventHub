@@ -13,7 +13,7 @@ const SignInPage = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await axios.post(`http://${process.env.REACT_APP_API_URL}/api/auth/signin`, data);
+      const response = await axios.post(`https://${process.env.REACT_APP_API_URL}/api/auth/signin`, data);
       const { token } = response.data;
 
       // ✅ Use the context's login function to update the global state

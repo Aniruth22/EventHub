@@ -18,7 +18,7 @@ const ChatWindow = ({ onClose }) => {
 
     try {
       // Send message to the backend
-      const response = await axios.post('http://localhost:5001/api/chat', {
+      const response = await axios.post(`https://${process.env.REACT_APP_API_URL}/api/chat`, {
         message: input,
       });
       const botMessage = { sender: 'bot', text: response.data.reply };
