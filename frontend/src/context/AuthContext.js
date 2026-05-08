@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       setAuthHeader(token);
       try {
-        const res = await axios.get(`https://${process.env.REACT_APP_API_URL}/api/profile/me`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/profile/me`);
         setUser(res.data);
       } catch (err) {
         // Token might be invalid/expired
