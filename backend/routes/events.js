@@ -28,7 +28,7 @@
   // @access  Public
   router.get('/', async (req, res) => {
     try {
-      const events = await Event.find({ status: 'Approved' }).sort({ date: 1 });
+      const events = await Event.find()
       res.json(events);
     } catch (err) {
       console.error(err.message);
@@ -44,11 +44,7 @@
       const today = new Date();
       const startOfDay = new Date(today.setHours(0, 0, 0, 0));
       const endOfDay = new Date(today.setHours(23, 59, 59, 999));
-      const events = await Event.find({
-        status: 'Approved',
-        date: { $gte: startOfDay, $lte: endOfDay }
-      }).sort({ date: 1 });
-      res.json(events);
+      const events = await Event.find()
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -68,10 +64,7 @@
       const nextSunday = new Date(nextFriday);
       nextSunday.setDate(nextFriday.getDate() + 2);
       nextSunday.setHours(23, 59, 59, 999);
-      const events = await Event.find({
-        status: 'Approved',
-        date: { $gte: nextFriday, $lte: nextSunday }
-      }).sort({ date: 1 });
+      const events = await Event.find()
       res.json(events);
     } catch (err) {
       console.error(err.message);
@@ -88,11 +81,7 @@
           if (user.following.length === 0) {
               return res.json([]);
           }
-          const events = await Event.find({
-              'host': { $in: user.following },
-              'status': 'Approved'
-          }).sort({ date: -1 });
-          res.json(events);
+          const events = await Event.find()
       } catch (err) {
           console.error(err.message);
           res.status(500).send('Server Error');

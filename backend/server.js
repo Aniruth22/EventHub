@@ -4,13 +4,24 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 
+const fs = require('fs');
+
+const uploadPath = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath);
+}
+
 // Load environment variables from .env file
 dotenv.config();
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB connected"))
+.catch(err => console.log(err));
 
 // Create an Express application
 const app = express();
