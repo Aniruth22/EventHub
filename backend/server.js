@@ -16,12 +16,19 @@ if (!fs.existsSync(uploadPath)) {
 dotenv.config();
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+  console.log("✅ MongoDB connected");
+
+  app.listen(PORT, () => {
+    console.log(`✅ Server is running on port ${PORT}`);
+  });
+
 })
-.then(() => console.log("MongoDB connected"))
-.catch(err => console.log(err));
+.catch((err) => {
+  console.log("❌ MongoDB connection error:");
+  console.log(err);
+});
 
 // Create an Express application
 const app = express();
@@ -58,6 +65,3 @@ app.get('/', (req, res) => {
 
 // Define the port the server will run on, from .env file or default to 5000
 const PORT = process.env.PORT || 5000;
-
-// Start the server and listen for incoming requests
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
